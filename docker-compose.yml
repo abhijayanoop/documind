@@ -1,0 +1,14 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: documind
+      POSTGRES_PASSWORD: localdev
+      POSTGRES_DB: documind
+    ports:
+      - "5432:5432"
+    volumes:
+      - documind_pgdata:/var/lib/postgresql/data
+
+volumes:
+  documind_pgdata:
