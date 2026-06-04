@@ -1,4 +1,4 @@
-CREATE TABLE documents{
+CREATE TABLE documents (
     id BIGSERIAL PRIMARY KEY,
     tenant_id TEXT NOT NULL,
     document_id TEXT NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE documents{
     embedding vector(1536),
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     UNIQUE (tenant_id, document_id)
-}
+);
 
 CREATE INDEX idx_documents_tenant_access
     ON documents (tenant_id, access_level);
