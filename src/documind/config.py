@@ -5,5 +5,7 @@ class Settings(BaseSettings):
 
     database_url: str
     embedding_dimension: int = 1536
+    embedding_model: str = "text-embedding-3-small"
+    openai_api_key: str = ""
 
 settings = Settings()
