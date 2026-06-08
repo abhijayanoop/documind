@@ -1,4 +1,4 @@
-CREATE TABLE documents (
+CREATE TABLE IF NOT EXISTS  documents (
     id BIGSERIAL PRIMARY KEY,
     tenant_id TEXT NOT NULL,
     document_id TEXT NOT NULL,
@@ -12,10 +12,10 @@ CREATE TABLE documents (
     UNIQUE (tenant_id, document_id)
 );
 
-CREATE INDEX idx_documents_tenant_access
+CREATE INDEX IF NOT EXISTS idx_documents_tenant_access
     ON documents (tenant_id, access_level);
 
-CREATE TABLE user_roles (
+CREATE TABLE IF NOT EXISTS  user_roles (
     id          BIGSERIAL PRIMARY KEY,
     tenant_id   TEXT NOT NULL,
     user_id     TEXT NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE user_roles (
     UNIQUE (tenant_id, user_id)
 );
 
-CREATE TABLE query_log (
+CREATE TABLE IF NOT EXISTS  query_log (
     id                 BIGSERIAL PRIMARY KEY,
     tenant_id          TEXT NOT NULL,
     user_id            TEXT NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE query_log (
     created_at         TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
-CREATE INDEX idx_query_log_tenant_user
+CREATE INDEX IF NOT EXISTS idx_query_log_tenant_user
     ON query_log (tenant_id, user_id);
 
 
