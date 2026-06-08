@@ -35,7 +35,7 @@ class DenseRetriever:
         return [RetrievedDoc(document_id=r[0], title=r[1], content=r[2], score=float(r[3])) for r in rows]
 
 class BM25Retriever:
-    def __init__(self, access_controller: AccessController):
+    def __init__(self, access_controller: AccessController | None = None):
         self.access = access_controller or AccessController()
 
     def retrieve(self, query: str, tenant_id: str, user_id: str, top_k: int = 5)->list[RetrievedDoc]:
