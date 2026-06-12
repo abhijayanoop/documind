@@ -13,5 +13,8 @@ class Settings(BaseSettings):
     langfuse_public_key: str = ""
     langfuse_secret_key: str = ""
     langfuse_host: str = "https://cloud.langfuse.com"
+    jwt_secret: str = "dev-only-change-me"     # MUST be overridden in .env for any real use
+    jwt_algorithm: str = "HS256"
+    jwt_expiry_minutes: int = 60
 
 settings = Settings()
