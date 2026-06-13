@@ -2,6 +2,7 @@ from fastapi import FastAPI, Header, HTTPException, Depends
 from pydantic import BaseModel
 from documind.pipeline import AnswerPipeline
 from documind.auth import Principal, decode_access_token, AuthError
+from documind.ingest import DocumentInput, ingest_documents
 
 app = FastAPI(title="Documind", version="1.0.0")
 
@@ -16,6 +17,11 @@ def get_principal(authorization: str = Header(default="")) -> Principal:
     except AuthError as e:
         raise HTTPException(status_code=401, detail=str(e))
     
+def require_admin(principal: Principal = Depends(get_principal)) -> Principal:
+    if(principal.role != "admin"):
+        raise HTTPException(403, "Admin role required")
+    return principal
+    
 class QueryRequest(BaseModel):
     question: str
     top_k: int = 5
@@ -29,8 +35,20 @@ class QueryResponse(BaseModel):
     model: str
     total_tokens: int
 
+class IngestItem(BaseModel):
+    document_id: str
+    title: str
+    content: str
+    access_level: str
+
+class IngestRequest(BaseModel):
+    documents: list[IngestItem]
+
+class IngestResponse(BaseModel):
+    ingested: int
+
 @app.get("/health")
-def get_heath():
+def health():
     return {"status": "healthy"}
 
 @app.post("/query", response_model=QueryResponse)
@@ -44,4 +62,22 @@ def query(req: QueryRequest, principal: Principal = Depends(get_principal)) -> Q
         model=result.model,
         total_tokens=result.prompt_tokens + result.completion_tokens,
     )
+
+@app.post("/ingest", response_model=IngestResponse)
+def ingest(req: IngestRequest, principal: Principal = Depends(require_admin)) -> IngestResponse:
+    docs = [
+        DocumentInput(
+            tenant_id=principal.tenant_id,   # tenant from token — can't cross-write
+            document_id=item.document_id,
+            title=item.title,
+            content=item.content,
+            access_level=item.access_level,
+        )
+        for item in req.documents
+    ]
+
+
+    n_docs = ingest_documents(docs)
+    return IngestResponse(ingested=n_docs)
+
 

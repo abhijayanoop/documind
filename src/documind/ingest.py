@@ -10,7 +10,7 @@ class DocumentInput:
     content: str
     access_level: str
 
-def injest_documents(docs: list[DocumentInput], embedder: Embedder | None = None)->int:
+def ingest_documents(docs: list[DocumentInput], embedder: Embedder | None = None)->int:
     if not docs:
         return 0
     
@@ -26,9 +26,9 @@ def injest_documents(docs: list[DocumentInput], embedder: Embedder | None = None
                     VALUES (%s, %s, %s, %s, %s, %s)
                     ON CONFLICT (tenant_id, document_id)
                     DO UPDATE SET
-                    title = EXCLUDED.title
-                    content = EXCLUDED.content
-                    access_level = EXCLUDED.access_level
+                    title = EXCLUDED.title,
+                    content = EXCLUDED.content,
+                    access_level = EXCLUDED.access_level,
                     embedding = EXCLUDED.embedding
                 """, (doc.tenant_id, doc.document_id, doc.title, doc.content, doc.access_level, vector))
         conn.commit()
