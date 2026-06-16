@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Header, HTTPException, Depends
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 from documind.pipeline import AnswerPipeline
 from documind.auth import Principal, decode_access_token, AuthError
 from documind.ingest import DocumentInput, ingest_documents
@@ -25,6 +25,20 @@ def require_admin(principal: Principal = Depends(get_principal)) -> Principal:
 class QueryRequest(BaseModel):
     question: str
     top_k: int = 5
+
+    @field_validator("question")
+    @classmethod
+    def question_not_empty(cls, v: str) -> str:
+        if not v or not v.strip():
+            raise ValueError("question must not be empty")
+        return v.strip()
+
+    @field_validator("top_k")
+    @classmethod
+    def top_k_in_range(cls, v: int) -> int:
+        if not (1 <= v <= 20):
+            raise ValueError("top_k must be between 1 and 20")
+        return v
 
 
 class QueryResponse(BaseModel):
