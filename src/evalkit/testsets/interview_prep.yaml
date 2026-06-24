@@ -1,0 +1,49 @@
+version: 1
+domain: interview_preparation
+description: >
+  Eval cases for DocuMind over CRED/Razorpay interview-prep data.
+  Includes both answerable cases and access-controlled abstention cases.
+
+cases:
+  - id: cred_interview_topics
+    question: "What should I study for CRED interviews?"
+    user_id: candidate_1
+    tenant_id: cred
+    role: candidate
+    expected_behavior: answer
+    expected_facts:
+      - "consensus algorithms"
+    expected_doc_ids:
+      - doc_001
+
+  - id: cred_salary_as_manager
+    question: "What do ML engineers earn at CRED?"
+    user_id: manager_1
+    tenant_id: cred
+    role: hiring_manager
+    expected_behavior: answer
+    expected_facts:
+      - "25"
+      - "35"
+    expected_doc_ids:
+      - doc_002
+
+  - id: cred_salary_as_candidate
+    question: "What do ML engineers earn at CRED?"
+    user_id: candidate_1
+    tenant_id: cred
+    role: candidate
+    expected_behavior: abstain # access-controlled: candidate must NOT get salary
+    expected_facts: []
+    expected_doc_ids: []
+
+  - id: razorpay_interview_topics
+    question: "What does the Razorpay interview cover?"
+    user_id: candidate_2
+    tenant_id: razorpay
+    role: candidate
+    expected_behavior: answer
+    expected_facts:
+      - "payment gateway"
+    expected_doc_ids:
+      - doc_001
