@@ -1,0 +1,21 @@
+{
+  "summary": {
+    "timestamp": "2026-06-27T15:50:28.645310+00:00",
+    "total_cases": 1,
+    "passed": 1,
+    "pass_rate": 1.0,
+    "mean_faithfulness": 1.0,
+    "mean_answer_relevance": 0.8012,
+    "abstention_accuracy": null
+  },
+  "cases": [
+    {
+      "case_id": "cred_interview_topics",
+      "expected_behavior": "answer",
+      "abstention_correct": null,
+      "faithfulness": 1.0,
+      "answer_relevance": 0.8012088998758666,
+      "passed": true
+    }
+  ]
+}
