@@ -11,6 +11,7 @@ dependencies = [
     "click==8.1.7",
     "datasets==3.1.0",
     "fastapi==0.115.4",
+    "instructor==1.6.4",
     "langfuse==2.53.1",
     "litellm==1.51.0",
     "pgvector==0.3.6",
