@@ -3,6 +3,7 @@ from evalkit.runner import EvalRecord
 from ragas.metrics import faithfulness, answer_relevancy
 from ragas import evaluate
 from datasets import Dataset
+from evalkit.retrieval_metrics import score_retrieval
 
 @dataclass 
 class CaseScore:
@@ -11,6 +12,9 @@ class CaseScore:
     abstention_correct: bool | None = None
     faithfulness: float | None = None
     answer_relevance: float | None = None
+    context_precision: float | None = None   
+    context_recall: float | None = None      
+    hallucination_rate: float | None = None 
     passed: bool = False
 
 def score_records(records: list[EvalRecord]) -> list[CaseScore]:
@@ -18,6 +22,8 @@ def score_records(records: list[EvalRecord]) -> list[CaseScore]:
 
     answer_records = [r for r in records if r.case.expected_behavior == "answer"]
     abstain_records = [r for r in records if r.case.expected_behavior == "abstain"]
+
+    retrieval_by_id = {score_retrieval(r.case.expected_doc_ids, r.retrieved_doc_ids)  for r in records}
 
     for r in abstain_records:
         correct = r.abstained
@@ -34,11 +40,14 @@ def score_records(records: list[EvalRecord]) -> list[CaseScore]:
             faith = s["faithfulness"]
             rel = s["answer_relevancy"]
             passed = (faith >= 0.80) and (rel >= 0.75)
+            rscore = retrieval_by_id[r.case.id]
             scores.append(CaseScore(
                 case_id=r.case.id,
                 expected_behavior="answer",
                 faithfulness=faith,
                 answer_relevance=rel,
+                context_precision=rscore.precision,
+                context_recall=rscore.recall,
                 passed=passed,
             ))
     
