@@ -1,14 +1,26 @@
 {
   "summary": {
-    "timestamp": "2026-07-02T19:05:45.078114+00:00",
-    "total_cases": 1,
-    "passed": 1,
+    "timestamp": "2026-07-02T19:42:22.368723+00:00",
+    "total_cases": 4,
+    "passed": 4,
     "pass_rate": 1.0,
     "mean_faithfulness": 1.0,
-    "mean_answer_relevance": 0.8013,
-    "abstention_accuracy": null
+    "mean_answer_relevance": 0.892,
+    "abstention_accuracy": 1.0
   },
   "cases": [
+    {
+      "case_id": "cred_salary_as_candidate",
+      "expected_behavior": "abstain",
+      "abstention_correct": true,
+      "faithfulness": null,
+      "answer_relevance": null,
+      "context_precision": null,
+      "context_recall": 0.0,
+      "hallucination_rate": null,
+      "hallucination_claims": null,
+      "passed": true
+    },
     {
       "case_id": "cred_interview_topics",
       "expected_behavior": "answer",
@@ -53,6 +65,62 @@
           "claim": "The interview includes questions on eventual consistency versus strong consistency in distributed databases.",
           "supported": true,
           "reason": "This claim is directly supported by the context."
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case_id": "cred_salary_as_manager",
+      "expected_behavior": "answer",
+      "abstention_correct": null,
+      "faithfulness": 1.0,
+      "answer_relevance": 0.9355922148766368,
+      "context_precision": 1.0,
+      "context_recall": 0.25,
+      "hallucination_rate": 0.0,
+      "hallucination_claims": [
+        {
+          "claim": "Mid-level ML engineers at CRED earn a base salary in the range of 25 to 35 LPA, along with ESOPs and performance bonuses.",
+          "supported": true,
+          "reason": "This claim is directly supported by the context provided."
+        },
+        {
+          "claim": "Senior ML engineers earn between 40 and 60 LPA.",
+          "supported": true,
+          "reason": "This claim is directly supported by the context provided."
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case_id": "razorpay_interview_topics",
+      "expected_behavior": "answer",
+      "abstention_correct": null,
+      "faithfulness": 1.0,
+      "answer_relevance": 0.9390974821171681,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "hallucination_rate": 0.25,
+      "hallucination_claims": [
+        {
+          "claim": "The Razorpay engineering interview covers the design of a payment gateway end to end.",
+          "supported": true,
+          "reason": "This claim is directly supported by the context."
+        },
+        {
+          "claim": "The interview includes idempotency of payment requests, handling webhooks, reconciliation, and ensuring exactly-once semantics in money movement.",
+          "supported": true,
+          "reason": "This claim is directly supported by the context."
+        },
+        {
+          "claim": "Candidates are assessed on API design, database modelling for transactions, and handling failure and retries.",
+          "supported": true,
+          "reason": "This claim is directly supported by the context."
+        },
+        {
+          "claim": "The information is referenced as Document 1.",
+          "supported": false,
+          "reason": "The context does not mention any document or reference."
         }
       ],
       "passed": true

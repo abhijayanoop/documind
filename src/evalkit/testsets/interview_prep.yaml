@@ -33,9 +33,10 @@ cases:
     user_id: candidate_1
     tenant_id: cred
     role: candidate
-    expected_behavior: abstain # access-controlled: candidate must NOT get salary
+    expected_behavior: abstain
     expected_facts: []
-    expected_doc_ids: []
+    expected_doc_ids:
+      []
 
   - id: razorpay_interview_topics
     question: "What does the Razorpay interview cover?"

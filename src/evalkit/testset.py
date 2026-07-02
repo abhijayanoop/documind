@@ -42,4 +42,4 @@ def load_testset(path: str | Path) -> TestSet:
             expected_doc_ids=c.get("expected_doc_ids", []),
         ))
 
-        return TestSet(version=raw["version"], domain=raw["domain"], cases=cases)
+    return TestSet(version=raw["version"], domain=raw["domain"], cases=cases)

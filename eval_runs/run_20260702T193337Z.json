@@ -1,10 +1,10 @@
 {
   "summary": {
-    "timestamp": "2026-07-02T19:42:22.368723+00:00",
+    "timestamp": "2026-07-02T19:33:37.554741+00:00",
     "total_cases": 4,
-    "passed": 4,
-    "pass_rate": 1.0,
-    "mean_faithfulness": 1.0,
+    "passed": 3,
+    "pass_rate": 0.75,
+    "mean_faithfulness": 0.8889,
     "mean_answer_relevance": 0.892,
     "abstention_accuracy": 1.0
   },
@@ -37,34 +37,24 @@
           "reason": "This claim is directly supported by the context."
         },
         {
-          "claim": "Candidates should be prepared to explain consensus algorithms such as Raft and Paxos.",
+          "claim": "Candidates should be prepared to explain consensus algorithms such as Raft and Paxos, how leader election works, and how systems achieve fault tolerance.",
           "supported": true,
           "reason": "This claim is directly supported by the context."
         },
         {
-          "claim": "Candidates should be prepared to explain how leader election works.",
+          "claim": "The interview also covers data structures, system design, and questions on eventual consistency versus strong consistency in distributed databases.",
           "supported": true,
           "reason": "This claim is directly supported by the context."
         },
         {
-          "claim": "Candidates should be prepared to explain how systems achieve fault tolerance.",
+          "claim": "You should study distributed systems fundamentals, including consensus algorithms like Raft and Paxos, leader election, and fault tolerance.",
           "supported": true,
-          "reason": "This claim is directly supported by the context."
+          "reason": "This claim is a paraphrase of the supported claims in the context."
         },
         {
-          "claim": "The interview also covers data structures.",
+          "claim": "Additionally, focus on data structures, system design, and the differences between eventual consistency and strong consistency in distributed databases.",
           "supported": true,
-          "reason": "This claim is directly supported by the context."
-        },
-        {
-          "claim": "The interview also covers system design.",
-          "supported": true,
-          "reason": "This claim is directly supported by the context."
-        },
-        {
-          "claim": "The interview includes questions on eventual consistency versus strong consistency in distributed databases.",
-          "supported": true,
-          "reason": "This claim is directly supported by the context."
+          "reason": "This claim is a paraphrase of the supported claims in the context."
         }
       ],
       "passed": true
@@ -73,14 +63,14 @@
       "case_id": "cred_salary_as_manager",
       "expected_behavior": "answer",
       "abstention_correct": null,
-      "faithfulness": 1.0,
+      "faithfulness": 0.6666666666666666,
       "answer_relevance": 0.9355922148766368,
       "context_precision": 1.0,
       "context_recall": 0.25,
       "hallucination_rate": 0.0,
       "hallucination_claims": [
         {
-          "claim": "Mid-level ML engineers at CRED earn a base salary in the range of 25 to 35 LPA, along with ESOPs and performance bonuses.",
+          "claim": "Mid-level ML engineers at CRED earn a base salary in the range of 25 to 35 LPA.",
           "supported": true,
           "reason": "This claim is directly supported by the context provided."
         },
@@ -90,7 +80,7 @@
           "reason": "This claim is directly supported by the context provided."
         }
       ],
-      "passed": true
+      "passed": false
     },
     {
       "case_id": "razorpay_interview_topics",
@@ -100,7 +90,7 @@
       "answer_relevance": 0.9390974821171681,
       "context_precision": 1.0,
       "context_recall": 1.0,
-      "hallucination_rate": 0.25,
+      "hallucination_rate": 0.0,
       "hallucination_claims": [
         {
           "claim": "The Razorpay engineering interview covers the design of a payment gateway end to end.",
@@ -116,11 +106,6 @@
           "claim": "Candidates are assessed on API design, database modelling for transactions, and handling failure and retries.",
           "supported": true,
           "reason": "This claim is directly supported by the context."
-        },
-        {
-          "claim": "The information is referenced as Document 1.",
-          "supported": false,
-          "reason": "The context does not mention any document or reference."
         }
       ],
       "passed": true
