@@ -14,8 +14,8 @@ def score_retrieval(expected: list[str], retrieved: list[str]) -> RetrievalScore
 
     hit = retrieved_set & expected_set
 
-    precision = len(hit) / len(retrieved_set) if retrieved_set else 0.0
-    recall = len(hit) / len(expected_set)
+    precision = len(hit) / len(expected_set) if expected_set else None
+    recall = len(hit) / len(retrieved_set)
 
     return RetrievalScore(
         precision= precision,
