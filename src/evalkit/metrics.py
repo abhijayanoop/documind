@@ -38,7 +38,10 @@ def score_records(records: list[EvalRecord]) -> list[CaseScore]:
     answer_records = [r for r in records if r.case.expected_behavior == "answer"]
     abstain_records = [r for r in records if r.case.expected_behavior == "abstain"]
 
-    retrieval_by_id = {score_retrieval(r.case.expected_doc_ids, r.retrieved_doc_ids)  for r in records}
+    retrieval_by_id = {
+        r.case.id: score_retrieval(r.case.expected_doc_ids, r.retrieved_doc_ids)
+        for r in records
+    }
 
     for r in abstain_records:
         rscore = retrieval_by_id[r.case.id]

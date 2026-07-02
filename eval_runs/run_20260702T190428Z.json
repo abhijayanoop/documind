@@ -1,6 +1,6 @@
 {
   "summary": {
-    "timestamp": "2026-07-02T19:05:45.078114+00:00",
+    "timestamp": "2026-07-02T19:04:28.835594+00:00",
     "total_cases": 1,
     "passed": 1,
     "pass_rate": 1.0,
@@ -25,34 +25,24 @@
           "reason": "This claim is directly supported by the context."
         },
         {
-          "claim": "Candidates should be prepared to explain consensus algorithms such as Raft and Paxos.",
+          "claim": "Candidates should be prepared to explain consensus algorithms such as Raft and Paxos, how leader election works, and how systems achieve fault tolerance.",
           "supported": true,
           "reason": "This claim is directly supported by the context."
         },
         {
-          "claim": "Candidates should be prepared to explain how leader election works.",
+          "claim": "The interview also covers data structures, system design, and questions on eventual consistency versus strong consistency in distributed databases.",
           "supported": true,
           "reason": "This claim is directly supported by the context."
         },
         {
-          "claim": "Candidates should be prepared to explain how systems achieve fault tolerance.",
+          "claim": "You should study distributed systems fundamentals, including consensus algorithms like Raft and Paxos, leader election, and fault tolerance.",
           "supported": true,
-          "reason": "This claim is directly supported by the context."
+          "reason": "This claim is a paraphrase of the supported claims in the context."
         },
         {
-          "claim": "The interview also covers data structures.",
+          "claim": "Additionally, focus on data structures, system design, and the differences between eventual consistency and strong consistency in distributed databases.",
           "supported": true,
-          "reason": "This claim is directly supported by the context."
-        },
-        {
-          "claim": "The interview also covers system design.",
-          "supported": true,
-          "reason": "This claim is directly supported by the context."
-        },
-        {
-          "claim": "The interview includes questions on eventual consistency versus strong consistency in distributed databases.",
-          "supported": true,
-          "reason": "This claim is directly supported by the context."
+          "reason": "This claim is a paraphrase of the supported claims in the context."
         }
       ],
       "passed": true
