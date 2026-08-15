@@ -3,11 +3,14 @@ name: EvalKit Quality Gate
 on:
   pull_request:
     branches: [main]
-  workflow_dispatch:  
+  workflow_dispatch:
 
 jobs:
   eval:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
 
     services:
       db:
@@ -57,10 +60,17 @@ jobs:
         run: uv run python -m evalkit.cli
 
       - name: Upload report artifact
-        if: always()          
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: eval-report
           path: |
             eval_report.md
             eval_report.json
+
+      - name: Comment report on PR
+        if: always() && github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: evalkit
+          path: eval_report.md
