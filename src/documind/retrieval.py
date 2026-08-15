@@ -38,19 +38,20 @@ class BM25Retriever:
     def __init__(self, access_controller: AccessController | None = None):
         self.access = access_controller or AccessController()
 
-    def retrieve(self, query: str, tenant_id: str, user_id: str, top_k: int = 5)->list[RetrievedDoc]:
+    def retrieve(self, query: str, user_id: str, tenant_id: str, top_k: int = 5)->list[RetrievedDoc]:
         accessible_docs = self.access.get_accessible_document_ids(user_id, tenant_id)
         if not accessible_docs:
             return []
-        
+
         with get_connection() as conn:
             with conn.cursor() as cur:
                 cur.execute("""
-                    SELECT document_id, title, content, 
-                    ts_rank(content_tsv, websearch_to_tsquery("english", %s)) AS rank
-                    WHERE tenant_id=%s 
+                    SELECT document_id, title, content,
+                    ts_rank(content_tsv, websearch_to_tsquery('english', %s)) AS rank
+                    FROM documents
+                    WHERE tenant_id=%s
                     AND document_id=ANY(%s)
-                    AND content_tsv @@ websearch_to_tsquery("english", %s)
+                    AND content_tsv @@ websearch_to_tsquery('english', %s)
                     LIMIT %s
                 """, (query, tenant_id, accessible_docs, query, top_k))
                 rows = cur.fetchall()
