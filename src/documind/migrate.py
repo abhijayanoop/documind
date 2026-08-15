@@ -1,10 +1,11 @@
 from pathlib import Path
-from documind.database import get_connection
+from documind.database import get_connection, init_db
 
 MIGRATIONS_DIRECTORY_PATH = Path(__file__).parent.parent.parent / "migrations"
 
 def run_migrations()->None:
     print(MIGRATIONS_DIRECTORY_PATH)
+    init_db()
     files = sorted(MIGRATIONS_DIRECTORY_PATH.glob("*.sql"))
     with get_connection() as conn:
         for file in files:
