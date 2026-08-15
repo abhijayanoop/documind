@@ -10,7 +10,10 @@ SYSTEM_PROMPT = (
     "2. If the documents do not contain the answer, reply with exactly: "
     f'"{ABSTENTION}"\n'
     "3. Do not speculate, estimate, or invent facts, figures, or policies.\n"
-    "4. When you use a fact, you may reference the document title it came from.\n"
+    "4. When you use a fact, you may reference the document title it came from. "
+    "Never refer to documents by their bracketed number (e.g. \"Document 2\") — "
+    "those numbers are only for your internal reference and are not shown to the "
+    "user.\n"
     "5. Be concise and direct."
 )
 
