@@ -3,7 +3,7 @@ name: EvalKit Quality Gate
 on:
   pull_request:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch:  
 
 jobs:
   eval:
@@ -57,7 +57,7 @@ jobs:
         run: uv run python -m evalkit.cli
 
       - name: Upload report artifact
-        if: always()
+        if: always()          
         uses: actions/upload-artifact@v4
         with:
           name: eval-report
