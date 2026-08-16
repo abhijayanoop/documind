@@ -1,15 +1,15 @@
 {
   "summary": {
-    "timestamp": "2026-08-16T11:24:27.126033+00:00",
+    "timestamp": "2026-08-16T11:27:06.542547+00:00",
     "total_cases": 4,
     "passed": 4,
     "pass_rate": 1.0,
     "mean_faithfulness": 1.0,
-    "mean_answer_relevance": 0.9176,
+    "mean_answer_relevance": 0.9005,
     "abstention_accuracy": 1.0,
     "mean_hallucination_rate": 0.0,
-    "mean_prompt_tokens": 1818.75,
-    "mean_completion_tokens": 78.25
+    "mean_prompt_tokens": 1731.5,
+    "mean_completion_tokens": 75.5
   },
   "cases": [
     {
@@ -29,7 +29,7 @@
       "expected_behavior": "answer",
       "abstention_correct": null,
       "faithfulness": 1.0,
-      "answer_relevance": 0.8558718183419821,
+      "answer_relevance": 0.8045439661362792,
       "context_precision": 1.0,
       "context_recall": 1.0,
       "hallucination_rate": 0.0,
@@ -37,7 +37,7 @@
         {
           "claim": "You should study distributed systems fundamentals.",
           "supported": true,
-          "reason": "The context states that CRED's technical interviews for engineering roles are built around distributed systems fundamentals."
+          "reason": "The context states that CRED's technical interviews are built around distributed systems fundamentals."
         },
         {
           "claim": "You should study consensus algorithms like Raft and Paxos.",
@@ -55,24 +55,24 @@
           "reason": "The context discusses fault tolerance, replication factors, quorum reads and writes, and the CAP theorem as important topics in the interview."
         },
         {
-          "claim": "You should be prepared to discuss core data structures, system design, and trade-offs between eventual and strong consistency.",
+          "claim": "You should be prepared to discuss core data structures, system design, eventual versus strong consistency, and practical coding problems.",
           "supported": true,
-          "reason": "The context indicates that the interview covers core data structures and system design, including eventual and strong consistency."
+          "reason": "The context indicates that the interview covers core data structures, system design, and consistency models."
         },
         {
-          "claim": "You should practice coding problems related to parsing structured data, implementing in-memory caches, and simulating ledgers.",
+          "claim": "You should focus on edge cases, time and space complexity, and failure-mode analysis.",
           "supported": true,
-          "reason": "The context mentions that coding rounds lean toward practical problems such as parsing structured data, implementing caches, and simulating ledgers."
+          "reason": "The context emphasizes the importance of correctness under edge cases, time and space complexity, and failure-mode analysis."
         },
         {
-          "claim": "You should focus on correctness under edge cases, time and space complexity.",
+          "claim": "You should practice designing systems with clear assumptions about scale.",
           "supported": true,
-          "reason": "The context states that interviewers care about correctness under edge cases and expect candidates to discuss time and space complexity."
+          "reason": "The context advises candidates to explicitly state assumptions about scale before diving into architecture."
         },
         {
-          "claim": "You should be ready to sketch data models and clarify requirements before diving into design.",
+          "claim": "You should clarify functional and non-functional requirements before diving into architecture.",
           "supported": true,
-          "reason": "The context encourages candidates to sketch data models early and clarify requirements before starting the design."
+          "reason": "The context states that spending time clarifying requirements before writing anything is consistently rewarded."
         }
       ],
       "passed": true
@@ -116,34 +116,34 @@
       "hallucination_rate": 0.0,
       "hallucination_claims": [
         {
-          "claim": "The Razorpay interview covers the design of a payment gateway.",
+          "claim": "The Razorpay interview covers the design of a payment gateway end to end.",
           "supported": true,
           "reason": "This is explicitly stated in the context."
         },
         {
-          "claim": "The interview focuses on themes such as idempotency of payment requests, handling webhooks, reconciliation of discrepancies, ensuring exactly-once semantics in money movement, API design for payments, database modeling for transactions, handling failures and retries, rate limiting and abuse prevention, and the settlement side of payments.",
+          "claim": "The interview focuses on themes such as idempotency of payment requests, handling webhooks, reconciliation of discrepancies, ensuring exactly-once semantics in money movement, API design for payments, database modeling for transactions, handling failure and retries, rate limiting and abuse prevention, and comfort with the settlement side of payments.",
           "supported": true,
           "reason": "These themes are detailed in the context."
         },
         {
-          "claim": "Candidates are assessed on their ability to communicate trade-offs in their designs.",
+          "claim": "The interview includes a coding round focused on correctness under concurrency.",
           "supported": true,
           "reason": "This is mentioned in the context."
         },
         {
-          "claim": "Candidates may face a coding round focused on correctness under concurrency.",
-          "supported": true,
-          "reason": "This is stated in the context."
-        },
-        {
-          "claim": "Candidates may face a behavioral round exploring their handling of high-stakes production incidents.",
+          "claim": "The interview includes a behavioral round exploring the candidate's handling of high-stakes production incidents.",
           "supported": true,
           "reason": "This is mentioned in the context."
         },
         {
-          "claim": "Multi-currency and multi-region considerations may also be discussed, particularly in senior interviews.",
+          "claim": "Multi-currency and multi-region considerations may also be discussed.",
           "supported": true,
-          "reason": "This is explicitly stated in the context."
+          "reason": "This is mentioned in the context."
+        },
+        {
+          "claim": "Candidates are assessed on their communication of trade-offs in design choices.",
+          "supported": true,
+          "reason": "This is mentioned in the context."
         }
       ],
       "passed": true

@@ -1,0 +1,182 @@
+{
+  "summary": {
+    "timestamp": "2026-08-16T11:33:58.510984+00:00",
+    "total_cases": 4,
+    "passed": 4,
+    "pass_rate": 1.0,
+    "mean_faithfulness": 0.963,
+    "mean_answer_relevance": 0.9047,
+    "abstention_accuracy": 1.0,
+    "mean_hallucination_rate": 0.0,
+    "mean_prompt_tokens": 1818.75,
+    "mean_completion_tokens": 148
+  },
+  "cases": [
+    {
+      "case_id": "cred_salary_as_candidate",
+      "expected_behavior": "abstain",
+      "abstention_correct": true,
+      "faithfulness": null,
+      "answer_relevance": null,
+      "context_precision": null,
+      "context_recall": 0.0,
+      "hallucination_rate": null,
+      "hallucination_claims": null,
+      "passed": true
+    },
+    {
+      "case_id": "cred_interview_topics",
+      "expected_behavior": "answer",
+      "abstention_correct": null,
+      "faithfulness": 1.0,
+      "answer_relevance": 0.8462043410410592,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "hallucination_claims": [
+        {
+          "claim": "You should study distributed systems fundamentals, focusing on consensus algorithms like Raft and Paxos, including leader election, log replication, and handling network partitions.",
+          "supported": true,
+          "reason": "The context states that CRED's technical interviews focus on distributed systems fundamentals, particularly consensus algorithms like Raft and Paxos, including leader election, log replication, and handling network partitions."
+        },
+        {
+          "claim": "Be prepared to discuss fault tolerance, replication factors, quorum reads and writes, and the CAP theorem.",
+          "supported": true,
+          "reason": "The context mentions that the interview covers fault tolerance, replication factors, quorum reads and writes, and the CAP theorem."
+        },
+        {
+          "claim": "Understand eventual consistency versus strong consistency, and be able to give examples of where each is appropriate.",
+          "supported": true,
+          "reason": "The context discusses eventual consistency versus strong consistency and provides examples of where each is appropriate."
+        },
+        {
+          "claim": "Practice coding practical problems such as parsing structured data, implementing in-memory caches, and simulating ledgers.",
+          "supported": true,
+          "reason": "The context states that coding rounds at CRED involve practical problems like parsing structured data, implementing in-memory caches, and simulating ledgers."
+        },
+        {
+          "claim": "Prepare for system design questions by methodically working through requirements, bottlenecks, and trade-offs, and be ready to sketch data models early.",
+          "supported": true,
+          "reason": "The context advises candidates to work through requirements, bottlenecks, and trade-offs methodically and to sketch data models early in system design questions."
+        },
+        {
+          "claim": "Study a small number of systems deeply, and be prepared to discuss edge cases and failure modes.",
+          "supported": true,
+          "reason": "The context suggests that preparation for the distributed systems round is most effective when grounded in a small number of systems studied deeply, and it emphasizes discussing edge cases and failure modes."
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case_id": "cred_salary_as_manager",
+      "expected_behavior": "answer",
+      "abstention_correct": null,
+      "faithfulness": 0.8888888888888888,
+      "answer_relevance": 0.9295739444486074,
+      "context_precision": 1.0,
+      "context_recall": 0.5,
+      "hallucination_rate": 0.0,
+      "hallucination_claims": [
+        {
+          "claim": "Mid-level ML engineers at CRED earn a base salary in the range of 25 to 35 LPA.",
+          "supported": true,
+          "reason": "The context explicitly states that mid-level ML engineers earn a base salary in the range of 25 to 35 LPA."
+        },
+        {
+          "claim": "Senior ML engineers earn between 40 and 60 LPA.",
+          "supported": true,
+          "reason": "The context explicitly states that senior ML engineers earn between 40 and 60 LPA."
+        },
+        {
+          "claim": "Staff and principal-level ML engineers have compensation that is individually negotiated and not published as a fixed range.",
+          "supported": true,
+          "reason": "The context states that staff and principal-level ML engineers are compensated on a separate, individually negotiated band that is reviewed case by case rather than published as a fixed range."
+        },
+        {
+          "claim": "Mid-level and senior engineers receive ESOPs and an annual performance bonus targeted at 10 to 15 percent of the base salary.",
+          "supported": true,
+          "reason": "The context confirms that mid-level engineers receive ESOPs and an annual performance bonus targeted at 10 to 15 percent of base salary, and it implies similar treatment for senior engineers."
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case_id": "razorpay_interview_topics",
+      "expected_behavior": "answer",
+      "abstention_correct": null,
+      "faithfulness": 1.0,
+      "answer_relevance": 0.9384093462231305,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "hallucination_claims": [
+        {
+          "claim": "The Razorpay interview covers several key areas related to the design and operation of a payment gateway.",
+          "supported": true,
+          "reason": "The context describes the Razorpay interview as focusing on the design of a payment gateway and various related themes."
+        },
+        {
+          "claim": "Candidates are expected to design a payment gateway that processes transactions between customers and merchants, addressing specific failure scenarios.",
+          "supported": true,
+          "reason": "The context states that the interview starts with designing a payment gateway and includes specific failure scenarios."
+        },
+        {
+          "claim": "Candidates should explain how to handle retries of payment requests without charging the customer twice, typically using idempotency keys and deduplication tables.",
+          "supported": true,
+          "reason": "The context mentions the use of idempotency keys and deduplication tables to handle retries without double charging."
+        },
+        {
+          "claim": "Candidates need to describe a reliable webhook delivery and retry system, handling out-of-order or duplicate deliveries.",
+          "supported": true,
+          "reason": "The context specifies that candidates should describe a webhook system that handles out-of-order or duplicate deliveries."
+        },
+        {
+          "claim": "The interview probes how the system detects and corrects discrepancies between Razorpay's internal ledger and actual bank or card network transactions, ensuring exactly-once semantics in money movement.",
+          "supported": true,
+          "reason": "The context discusses reconciliation and ensuring exactly-once semantics in money movement."
+        },
+        {
+          "claim": "Candidates are assessed on API design, including versioning, error handling, and tokenization to keep sensitive data secure.",
+          "supported": true,
+          "reason": "The context mentions API design, versioning, error handling, and tokenization as assessment areas."
+        },
+        {
+          "claim": "Candidates should design a schema that prevents double-counting money, often using append-only ledger entries.",
+          "supported": true,
+          "reason": "The context states that candidates should design a schema to prevent double-counting, using append-only ledger entries."
+        },
+        {
+          "claim": "The interview explores handling database write failures, downstream bank call timeouts, and distinguishing transient from permanent failures.",
+          "supported": true,
+          "reason": "The context includes handling database write failures, bank call timeouts, and distinguishing failure types."
+        },
+        {
+          "claim": "Candidates should discuss detecting and managing failed authorization attempts and preventing automated fraud.",
+          "supported": true,
+          "reason": "The context covers rate limiting and abuse prevention, including managing failed authorization attempts."
+        },
+        {
+          "claim": "The coding round focuses on correctness under concurrency, such as implementing a rate limiter or a ledger with strict invariants.",
+          "supported": true,
+          "reason": "The context describes a coding round focused on concurrency, including implementing a rate limiter or ledger."
+        },
+        {
+          "claim": "The behavioral round explores handling high-stakes production incidents with a clear timeline of detection, mitigation, root cause, and follow-up fix.",
+          "supported": true,
+          "reason": "The context mentions a behavioral round exploring handling production incidents with a clear timeline."
+        },
+        {
+          "claim": "Candidates should understand the settlement process following authorization and address multi-currency and multi-region considerations.",
+          "supported": true,
+          "reason": "The context discusses the importance of understanding the settlement process and multi-currency/region considerations."
+        },
+        {
+          "claim": "Candidates are evaluated on their ability to articulate design trade-offs and optimizations.",
+          "supported": true,
+          "reason": "The context states that candidates are evaluated on communicating trade-offs and optimizations."
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

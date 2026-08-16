@@ -1,8 +1,10 @@
-from fastapi import FastAPI, Header, HTTPException, Depends
+from fastapi import FastAPI, Header, HTTPException, Depends, UploadFile, File, Form
 from pydantic import BaseModel, field_validator
 from documind.pipeline import AnswerPipeline
 from documind.auth import Principal, decode_access_token, AuthError
 from documind.ingest import DocumentInput, ingest_documents
+from documind.extract import extract_text
+from documind.chunking import chunk_text
 
 app = FastAPI(title="Documind", version="1.0.0")
 
@@ -94,4 +96,27 @@ def ingest(req: IngestRequest, principal: Principal = Depends(require_admin)) ->
     n_docs = ingest_documents(docs)
     return IngestResponse(ingested=n_docs)
 
+@app.post("/ingest/file", response_model=IngestResponse)
+async def ingest_file(
+    file: UploadFile = File(...),
+    document_id: str = Form(...),
+    title: str = Form(...),
+    access_level: str = Form(...),
+    principal: Principal = Depends(require_admin),
+) -> IngestResponse:
+    data = await file.read()
+    text = extract_text(file.filename, data)
+    chunks = chunk_text(text)
+    docs = [
+        DocumentInput(
+            tenant_id=principal.tenant_id,
+            document_id=f"{document_id}::chunk_{c.index}",
+            title=f"{title} (part {c.index + 1})",
+            content=c.text,
+            access_level=access_level,
+        )
+        for c in chunks
+    ]
+    n = ingest_documents(docs)
+    return IngestResponse(ingested=n)
 

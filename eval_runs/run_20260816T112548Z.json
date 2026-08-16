@@ -1,0 +1,132 @@
+{
+  "summary": {
+    "timestamp": "2026-08-16T11:25:48.621810+00:00",
+    "total_cases": 4,
+    "passed": 4,
+    "pass_rate": 1.0,
+    "mean_faithfulness": 1.0,
+    "mean_answer_relevance": 0.8826,
+    "abstention_accuracy": 1.0,
+    "mean_hallucination_rate": 0.0,
+    "mean_prompt_tokens": 1511,
+    "mean_completion_tokens": 77.25
+  },
+  "cases": [
+    {
+      "case_id": "cred_salary_as_candidate",
+      "expected_behavior": "abstain",
+      "abstention_correct": true,
+      "faithfulness": null,
+      "answer_relevance": null,
+      "context_precision": null,
+      "context_recall": 0.0,
+      "hallucination_rate": null,
+      "hallucination_claims": null,
+      "passed": true
+    },
+    {
+      "case_id": "cred_interview_topics",
+      "expected_behavior": "answer",
+      "abstention_correct": null,
+      "faithfulness": 1.0,
+      "answer_relevance": 0.815663384513473,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "hallucination_claims": [
+        {
+          "claim": "You should study distributed systems fundamentals, particularly consensus algorithms like Raft and Paxos.",
+          "supported": true,
+          "reason": "The context states that CRED's technical interviews focus on distributed systems fundamentals and consensus algorithms like Raft and Paxos."
+        },
+        {
+          "claim": "You should include leader election, log replication, network partition handling, and recovery processes in your study.",
+          "supported": true,
+          "reason": "The context specifies that candidates should be prepared to explain leader election, log replication, network partition handling, and recovery processes in detail."
+        },
+        {
+          "claim": "You should familiarize yourself with fault tolerance concepts, the CAP theorem, and how to justify design decisions based on consistency and availability trade-offs.",
+          "supported": true,
+          "reason": "The context mentions that candidates should be comfortable discussing fault tolerance concepts and the CAP theorem as part of their preparation."
+        },
+        {
+          "claim": "Prepare for practical coding problems related to structured data, in-memory caches, and simplified ledgers, focusing on correctness under edge cases and time/space complexity.",
+          "supported": true,
+          "reason": "The context describes the types of coding problems candidates can expect, including structured data, in-memory caches, and simplified ledgers, and emphasizes the importance of correctness and complexity."
+        },
+        {
+          "claim": "Practice system design by methodically working through requirements, bottlenecks, and trade-offs.",
+          "supported": true,
+          "reason": "The context indicates that system design questions require candidates to methodically work through requirements, bottlenecks, and trade-offs."
+        },
+        {
+          "claim": "Be able to explain mechanisms like vector clocks and last-write-wins for eventual consistency.",
+          "supported": true,
+          "reason": "The context states that candidates should be able to name mechanisms like vector clocks and last-write-wins in the context of eventual consistency."
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case_id": "cred_salary_as_manager",
+      "expected_behavior": "answer",
+      "abstention_correct": null,
+      "faithfulness": 1.0,
+      "answer_relevance": 0.8647338930963543,
+      "context_precision": 1.0,
+      "context_recall": 0.5,
+      "hallucination_rate": 0.0,
+      "hallucination_claims": [
+        {
+          "claim": "Mid-level ML engineers earn a base salary in the range of 25 to 35 LPA.",
+          "supported": true,
+          "reason": "This claim is directly supported by the context, which states the salary range for mid-level ML engineers."
+        },
+        {
+          "claim": "Senior ML engineers earn between 40 and 60 LPA.",
+          "supported": true,
+          "reason": "This claim is directly supported by the context, which specifies the salary range for senior ML engineers."
+        },
+        {
+          "claim": "Staff and principal-level ML engineers are compensated on a separate, individually negotiated band that is reviewed case by case.",
+          "supported": true,
+          "reason": "This claim is directly supported by the context, which describes the compensation structure for staff and principal-level ML engineers."
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case_id": "razorpay_interview_topics",
+      "expected_behavior": "answer",
+      "abstention_correct": null,
+      "faithfulness": 1.0,
+      "answer_relevance": 0.9673884488275045,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "hallucination_rate": 0.0,
+      "hallucination_claims": [
+        {
+          "claim": "The Razorpay interview covers the design of a payment gateway.",
+          "supported": true,
+          "reason": "This is explicitly stated in the context."
+        },
+        {
+          "claim": "The interview focuses on themes such as idempotency of payment requests, handling webhooks, reconciliation of discrepancies, ensuring exactly-once semantics in money movement, API design for payments, database modeling for transactions, handling failures and retries, rate limiting and abuse prevention, and communication of trade-offs in design choices.",
+          "supported": true,
+          "reason": "These themes are directly mentioned in the context."
+        },
+        {
+          "claim": "Candidates are assessed on their understanding of the settlement side of payments and multi-currency considerations.",
+          "supported": true,
+          "reason": "This is clearly stated in the context."
+        },
+        {
+          "claim": "There is a coding round focused on correctness under concurrency and a behavioral round exploring handling high-stakes production incidents.",
+          "supported": true,
+          "reason": "This is explicitly mentioned in the context."
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

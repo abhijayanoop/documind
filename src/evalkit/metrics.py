@@ -21,6 +21,10 @@ class CaseScore:
     hallucination_claims: list[dict] | None = None
     passed: bool = False
 
+def _base_doc_id(doc_id: str) -> str:
+    return doc_id.split("::chunk_")[0]
+
+
 def _fetch_context(tenant_id: str, doc_ids: list[str]) -> list[str]:
     if not doc_ids:
         return []
@@ -39,7 +43,10 @@ def score_records(records: list[EvalRecord]) -> list[CaseScore]:
     abstain_records = [r for r in records if r.case.expected_behavior == "abstain"]
 
     retrieval_by_id = {
-        r.case.id: score_retrieval(r.case.expected_doc_ids, r.retrieved_doc_ids)
+        r.case.id: score_retrieval(
+            r.case.expected_doc_ids,
+            [_base_doc_id(d) for d in r.retrieved_doc_ids],
+        )
         for r in records
     }
 

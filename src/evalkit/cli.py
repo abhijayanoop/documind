@@ -15,7 +15,7 @@ def main(testset: str, promote: bool):
     print(f"Running {len(ts.cases)} cases over '{ts.domain}' ...")
     records = EvalRunner().run(ts)
     scores = score_records(records)
-    summary = summarize(scores)
+    summary = summarize(scores, records)
 
     run_path = save_run(scores, summary)
     reg = detect_regressions(summary)

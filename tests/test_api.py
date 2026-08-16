@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 import pytest
 from fastapi.testclient import TestClient
 from documind import api
@@ -78,3 +80,30 @@ def test_ingest_requires_admin(client):
         headers=_auth("candidate_1", "cred", "candidate"),
     )
     assert r.status_code == 403
+
+
+def test_ingest_file_requires_admin(client):
+    r = client.post(
+        "/ingest/file",
+        files={"file": ("t.txt", b"hello world", "text/plain")},
+        data={"document_id": "d1", "title": "T", "access_level": "public"},
+        headers=_auth("candidate_1", "cred", "candidate"),
+    )
+    assert r.status_code == 403
+
+
+def test_ingest_file_chunks_and_ingests(client):
+    text = "Sentence one about CRED. " * 150
+    with patch("documind.api.ingest_documents", return_value=2) as mock_ingest:
+        r = client.post(
+            "/ingest/file",
+            files={"file": ("guide.txt", text.encode(), "text/plain")},
+            data={"document_id": "doc_test", "title": "Guide", "access_level": "public"},
+            headers=_auth("admin_1", "cred", "admin"),
+        )
+    assert r.status_code == 200
+    assert r.json() == {"ingested": 2}
+    called_docs = mock_ingest.call_args[0][0]
+    assert all(d.tenant_id == "cred" for d in called_docs)
+    assert called_docs[0].document_id == "doc_test::chunk_0"
+    assert len(called_docs) > 1
